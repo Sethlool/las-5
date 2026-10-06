@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime&display=swap');
+
+body{
+  background:#0f0f0f;
+  color:#c9c9c9;
+  font-family:'Courier Prime', monospace;
+  max-width:900px;
+  margin:auto;
+  padding:30px;
+  line-height:1.6;
+}
+.file,.paper{
+  border:1px solid #444;
+  padding:25px;
+  background:#181818;
+  margin-bottom:20px;
+}
+.paper{
+  background:#f2e8c9;
+  color:#1a1a1a;
+  font-family:'Special Elite', cursive;
+}
+.red{color:#ff3c3c}
+.stamp{border:3px solid #ff3c3c;color:#ff3c3c;padding:5px 15px;transform:rotate(-3deg);display:inline-block;font-weight:bold}
+a{color:#ff3c3c; text-decoration:none; border-bottom:1px dashed #ff3c3c}
+a:hover{background:#ff3c3c;color:#000}
+.coords{font-size:0.7em;opacity:0.5}
+.tachado{background:#000;color:#000;user-select:none}
+.hidden{color:#f2e8c9}
+.hidden::selection{background:black;color:white}
+/* SECRETO CSS: Coordenada maestra 19.4326, -99.1332 - busca /final.html */
