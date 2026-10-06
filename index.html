@@ -33,6 +33,15 @@
 
 <script>
 console.log("VARGAS - LOG: Cada ciudad miente. Clave para /final.html es TODASSONUNA");
+
+// Interferencia aleatoria cada 4-10 segundos
+setInterval(() => {
+  document.body.classList.add('glitch-active');
+  setTimeout(() => {
+    document.body.classList.remove('glitch-active');
+  }, 250);
+}, Math.random() * 6000 + 4000);
 </script>
+</body>
 </body>
 </html>
