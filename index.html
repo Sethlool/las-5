@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>LAS 5</title>
-<link rel="stylesheet" href="estilo.css?v=5">
+<link rel="stylesheet" href="estilo.css?v=6">
 </head>
 <body>
   <div class="container">
@@ -26,6 +26,14 @@
       <p><a href="Hurfani.html">[05] Hurfani - textext</a></p>
     </div>
 
+    <div class="file" style="margin-top:40px; border-style:dashed; border-color:#ff0000;">
+      <h3>> TERMINAL DE ACCESO - NIVEL 2</h3>
+      <p>Introduce clave recuperada del disco:</p>
+      <input type="text" id="clave" placeholder="CLAVE..." style="background:black; border:1px solid red; color:red; padding:10px; width:70%; font-family:monospace; text-transform:uppercase; outline:none;">
+      <button onclick="verificar()" style="background:red; color:black; border:none; padding:10px 15px; font-family:monospace; cursor:pointer; font-weight:bold;">DESBLOQUEAR</button>
+      <p id="msg" style="margin-top:10px; font-size:12px; min-height:15px;"></p>
+    </div>
+
     <!-- SECRETO 1: En tal coordenada puede haber esto: 19.2860, -99.1340 - Bajo el muelle -->
     <!-- SECRETO 2 EN BASE64: TG8gcXVlIHN1Y2VkaW8gZW5 IDA1LT AzLTE5ODMgYm8g2Ugb2x2aWRh = Lo que sucedió el 03-03-1983 no se olvida -->
 
@@ -33,6 +41,19 @@
 
 <script>
 console.log("VARGAS - LOG: Cada ciudad miente. Clave para /final.html es TODASSONUNA");
+
+function verificar() {
+  let c = document.getElementById('clave').value.toUpperCase().trim();
+  if (c === "TODASSONUNA") {
+    window.location.href = "final.html";
+  } else if (c === "03031983") {
+    window.location.href = "incidente.html";
+  } else if (c === "VARGAS") {
+    alert("LOG VARGAS 14-11-91: Me siguen. Dejé todo en /final.html. No confíes en Kurisutshi.");
+  } else {
+    document.getElementById('msg').innerHTML = "> CLAVE INCORRECTA. ACCESO DENEGADO. INTENTO REGISTRADO.";
+  }
+}
 
 // Interferencia aleatoria cada 4-10 segundos
 setInterval(() => {
@@ -42,6 +63,5 @@ setInterval(() => {
   }, 250);
 }, Math.random() * 6000 + 4000);
 </script>
-</body>
 </body>
 </html>
