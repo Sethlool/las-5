@@ -2,66 +2,71 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>LAS 5</title>
-<link rel="stylesheet" href="estilo.css?v=6">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="estilo.css">
+<title>CASO: LAS 5 NO RESUELTO</title>
 </head>
 <body>
-  <div class="container">
 
-    <p class="coords">> ARCHIVO RECUPERADO DEL DISCO DURO DEL DET. A. VARGAS // 14-11-1991</p>
-    <h1>CASO: <span class="red">LAS 5 </span> <span class="stamp">NO RESUELTO</span></h1>
+<div class="layout-principal">
 
-    <div class="file">
-      <p><b>ENCARGADO:</b> Det. Arturo Vargas - Desaparecido</p>
-      <p>Las 5 ciudades tienen gobiernos y creencias diferentes, pero todas esconden la misma cosa con diferente nombre. No es coincidencia.</p>
-      <p class="red"><b> el 03-03-1983 no se olvida.</b> ¿o si?.</p>
-    </div>
-
-    <div class="file">
-      <h3>> REGISTROS </h3>
-      <p><a href="Kurisutshi.html">[01] Kurisutshi - Capital</a></p>
-      <p><a href="Morikoshka.html">[02] Morikosk - textex</a></p>
-      <p><a href="Tsvety.html">[03] Tsvety - tetetexxx</a></p>
-      <p><a href="Ogni´s.html">[04] Ogni´s - textext</a></p>
-      <p><a href="Hurfani.html">[05] Hurfani - textext</a></p>
-    </div>
-
-    <div class="file" style="margin-top:40px; border-style:dashed; border-color:#ff0000;">
-      <h3>> TERMINAL DE ACCESO - NIVEL 2</h3>
-      <p>Introduce clave recuperada del disco:</p>
-      <input type="text" id="clave" placeholder="CLAVE..." style="background:black; border:1px solid red; color:red; padding:10px; width:70%; font-family:monospace; text-transform:uppercase; outline:none;">
-      <button onclick="verificar()" style="background:red; color:black; border:none; padding:10px 15px; font-family:monospace; cursor:pointer; font-weight:bold;">DESBLOQUEAR</button>
-      <p id="msg" style="margin-top:10px; font-size:12px; min-height:15px;"></p>
-    </div>
-
-    <!-- SECRETO 1: En tal coordenada puede haber esto: 19.2860, -99.1340 - Bajo el muelle -->
-    <!-- SECRETO 2 EN BASE64: TG8gcXVlIHN1Y2VkaW8gZW5 IDA1LT AzLTE5ODMgYm8g2Ugb2x2aWRh = Lo que sucedió el 03-03-1983 no se olvida -->
-
+  <!-- COLUMNA IZQUIERDA - IMAGEN -->
+  <div class="columna-lateral">
+    <img src="foto.jpg" class="img-evidencia" alt="Evidencia 01">
+    <p class="pie-foto">[EVIDENCIA_01] // 03-03-1983</p>
   </div>
 
-<script>
-console.log("VARGAS - LOG: Cada ciudad miente. Clave para /final.html es TODASSONUNA");
+  <!-- COLUMNA CENTRAL - TU ARCHIVO ACTUAL -->
+  <div class="file central">
+    <p class="cabecera">> ARCHIVO RECUPERADO DEL DISCO DURO DEL DET. A. VARGAS // 14-11-1991</p>
 
-function verificar() {
-  let c = document.getElementById('clave').value.toUpperCase().trim();
-  if (c === "TODASSONUNA") {
-    window.location.href = "final.html";
-  } else if (c === "03031983") {
-    window.location.href = "incidente.html";
-  } else if (c === "VARGAS") {
-    alert("LOG VARGAS 14-11-91: Me siguen. Dejé todo en /final.html. No confíes en Kurisutshi.");
-  } else {
-    document.getElementById('msg').innerHTML = "> CLAVE INCORRECTA. ACCESO DENEGADO. INTENTO REGISTRADO.";
-  }
-}
+    <h1 class="titulo-glitch">CASO: LAS 5 NO RESUELTO</h1>
 
-// Interferencia aleatoria cada 4-10 segundos
-setInterval(() => {
-  document.body.classList.add('glitch-active');
-  setTimeout(() => {
-    document.body.classList.remove('glitch-active');
-  }, 250);
-}, Math.random() * 6000 + 4000);
-</script>
+    <p class="encargado"><b>ENCARGADO:</b> Det. Arturo Vargas - Desaparecido</p>
+    <p>Las 5 ciudades tienen gobiernos y creencias diferentes, pero todas esconden la misma cosa con diferente nombre. No es coincidencia.</p>
+    <p class="resaltado">el 03-03-1983 no se olvida. ¿o sí?.</p>
+
+    <h2>> REGISTROS</h2>
+    <ul class="registros">
+      <li><a href="kurisutshi.html">[01] Kurisutshi - Capital</a></li>
+      <li><a href="morikosk.html">[02] Morikosk - textex</a></li>
+      <li><a href="tsvety.html">[03] Tsvety - tetetexxx</a></li>
+      <li><a href="ognis.html">[04] Ogni's - textext</a></li>
+      <li><a href="hurfani.html">[05] Hurfani - textext</a></li>
+    </ul>
+
+    <div class="terminal-box">
+      <h2>> TERMINAL DE ACCESO - NIVEL 2</h2>
+      <p>Introduce clave recuperada del disco:</p>
+      <div class="input-group">
+        <input type="text" id="claveInput" placeholder="CLAVE...">
+        <button id="btnDesbloquear">DESBLOQUEAR</button>
+      </div>
+      <p id="mensajeError" class="error-msg"></p>
+    </div>
+  </div>
+
+  <!-- COLUMNA DERECHA - IMAGEN -->
+  <div class="columna-lateral">
+    <img src="foto.jpg" class="img-evidencia" alt="Evidencia 02">
+    <p class="pie-foto">[EVIDENCIA_02] // MAPA RECORTADO</p>
+  </div>
+
+</div>
+
+<!-- TERCERA SECCIÓN - MAS INFORMACION -->
+<div class="tercera-seccion">
+  <div class="file">
+    <h2 class="red">> NOTAS RECUPERADAS / DATOS ADICIONALES</h2>
+    <p>03-03-1983 - Las 5 ciudades hicieron un pacto. Cada una escondería una parte.</p>
+    <p>1 esconde el cuerpo. 2 la voz. 3 el nido. 4 el nombre. 5 lo niega.</p>
+    <hr>
+    <p>Si estás leyendo esto, Vargas ya no está. Revisa los registros, cada ciudad miente de forma distinta pero todas tienen el mismo hueco en la misma fecha.</p>
+    <p class="resaltado">Coordenada base: 19.4326, -99.1332 - pero no es la real.</p>
+    <!-- Aquí puedes agregar todo lo que quieras, fotos, audios, etc -->
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
