@@ -1,22 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap');
 
 :root {
-  --bg: #0e0a1a;
-  --morado: #9d00ff;
-  --rojo: #ff0040;
-  --texto: #d8c2ff;
+  --bg: #08080a;
+  --panel: #121116;
+  --morado: #3d2f4d; /* morado apagado */
+  --rojo: #7a1c2a; /* rojo sangre seca */
+  --rojo-brillo: #a82a3a;
+  --texto: #c2c2c9;
+  --texto-apagado: #6b6b73;
 }
 
+* { box-sizing: border-box; }
+
 body {
-  background-color: var(--bg);
-  background-image: radial-gradient(ellipse at center, #1e1040 0%, #0e0a1a 70%);
+  background: var(--bg);
   color: var(--texto);
   font-family: 'Share Tech Mono', monospace;
   margin: 0;
-  padding: 60px 20px;
+  padding: 70px 20px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
+/* SCANLINE SOMBRIO LENTO */
 body::before {
   content: "";
   position: fixed;
@@ -24,118 +30,240 @@ body::before {
   background: repeating-linear-gradient(
     0deg,
     transparent 0px,
-    transparent 2px,
-    rgba(157,0,255,0.08) 3px,
+    transparent 3px,
+    rgba(255,255,255,0.03) 3px,
     transparent 4px
   );
   pointer-events: none;
   z-index: 100;
+  animation: scanMove 8s linear infinite;
 }
 
+@keyframes scanMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(20px); }
+}
+
+/* Viñeta negra */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.9) 100%);
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.95) 100%);
   pointer-events: none;
   z-index: 99;
 }
 
 .file {
-  max-width: 720px;
-  margin: 0 auto 40px auto;
-  background: rgba(15,10,35,0.9);
-  border: 1px solid var(--morado);
-  border-left: 3px solid var(--rojo);
-  padding: 30px;
+  max-width: 700px;
+  margin: 0 auto 45px auto;
+  background: var(--panel);
+  border: 1px solid #1e1e24;
+  border-top: 1px solid var(--morado);
+  padding: 40px 35px;
   position: relative;
-  box-shadow: 0 0 30px rgba(157,0,255,0.3), 0 0 60px rgba(255,0,64,0.15);
+  text-align: center; /* TODO CENTRADO */
+  box-shadow: 0 0 0 1px #000, 0 10px 40px rgba(0,0,0,0.8);
 }
 
+/* Etiqueta VHS ahora más apagada */
 .file::before {
-  content: "REC ● 03:03:1983 -- PLAY > CORRUPTED FILE";
+  content: "VHS // 03:03:1983 // CORRUPTED // NO SIGNAL";
   position: absolute;
-  top: -22px;
-  left: -1px;
-  right: -1px;
-  background: var(--rojo);
-  color: #000;
+  top: -12px;
+  left: 20px;
+  background: var(--bg);
+  border: 1px solid var(--rojo);
+  color: var(--texto-apagado);
   font-family: 'VT323', monospace;
-  font-size: 14px;
-  padding: 2px 10px;
+  font-size: 11px;
+  padding: 3px 10px;
   letter-spacing: 2px;
 }
 
 h1 {
   font-family: 'VT323', monospace;
-  font-size: 52px;
+  font-size: 56px;
   text-align: center;
-  color: #fff;
-  letter-spacing: 6px;
-  margin: 15px 0;
-  text-shadow: 3px 0 var(--rojo), -3px 0 var(--morado), 0 0 20px var(--morado);
-  animation: glitchVHS 2s infinite;
+  color: #e8e8e8;
+  letter-spacing: 8px;
+  margin: 10px 0 20px 0;
+  font-weight: 400;
+  text-shadow: 0 0 10px rgba(255,255,255,0.1);
+  animation: flickerTitle 4s infinite;
 }
 
-@keyframes glitchVHS {
-  0%, 90%, 100% { transform: translate(0); }
-  92% { transform: translate(-2px, 1px); }
-  94% { transform: translate(2px, -1px); }
-  96% { transform: translate(0); }
+@keyframes flickerTitle {
+  0%, 96%, 100% { opacity: 1; }
+  97% { opacity: 0.7; }
+  98% { opacity: 1; transform: translateX(-1px); }
+  99% { opacity: 0.8; transform: translateX(1px); }
+}
+
+.vhs-meta {
+  font-family: 'VT323', monospace;
+  font-size: 11px;
+  color: var(--texto-apagado);
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
 }
 
 h2 {
   font-family: 'VT323', monospace;
-  font-size: 18px;
-  color: var(--rojo);
-  letter-spacing: 3px;
-  margin-top: 40px;
-  border-bottom: 1px dashed var(--morado);
-  padding-bottom: 8px;
+  font-size: 15px;
+  color: var(--texto-apagado);
+  letter-spacing: 4px;
+  margin-top: 45px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: none;
+  opacity: 0.8;
 }
 
+h2.red { color: var(--rojo-brillo); }
+
+p {
+  font-size: 12.5px;
+  line-height: 1.9;
+  text-align: center;
+  color: var(--texto);
+  max-width: 520px;
+  margin: 0 auto 12px auto;
+}
+
+.cursiva {
+  font-style: italic;
+  color: var(--texto-apagado);
+  font-size: 11px;
+}
+
+/* LISTA - AHORA CON MOVIMIENTO AL SELECCIONAR */
 ul.registros {
   list-style: none;
   padding: 0;
+  margin-top: 25px;
 }
 
 ul.registros li {
-  background: rgba(157,0,255,0.05);
-  border: 1px solid rgba(157,0,255,0.2);
-  margin: 12px 0;
+  background: #0e0e12;
+  border: 1px solid #1c1c21;
+  margin: 10px 0;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+ul.registros li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0px;
+  background: var(--rojo);
+  transition: width 0.25s ease;
+}
+
+ul.registros li:hover {
+  background: #15151b;
+  border-color: #2a2a33;
+  transform: translateX(4px);
+  box-shadow: -5px 0 20px rgba(122,28,42,0.15);
+}
+
+ul.registros li:hover::before {
+  width: 3px;
+}
+
+/* ESTO ES EL MOVIMIENTO QUE PEDISTE AL SELECCIONAR */
+ul.registros li:active {
+  transform: translateX(4px) scale(0.98);
+  background: #1a1012;
 }
 
 ul.registros li a {
   display: block;
-  padding: 14px 15px;
-  color: var(--texto);
+  padding: 16px 20px;
+  color: var(--texto-apagado);
   text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  transition: color 0.2s;
 }
 
+ul.registros li:hover a {
+  color: #fff;
+  letter-spacing: 2px;
+  animation: textShake 0.15s 2;
+}
+
+@keyframes textShake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-1px); }
+  75% { transform: translateX(1px); }
+  100% { transform: translateX(0); }
+}
+
+/* TERMINAL MAS SOMBRIA */
 .terminal-box {
   margin-top: 50px;
-  background: #000;
-  border: 1px solid var(--rojo);
-  padding: 25px;
+  background: #07070a;
+  border: 1px solid #1e1e24;
+  padding: 30px;
   text-align: center;
 }
 
 .terminal-box input {
-  background: #0a0a0a;
-  border: 1px solid var(--morado);
-  color: var(--rojo);
+  background: #0a0a0f;
+  border: 1px solid #22222a;
+  color: var(--rojo-brillo);
   padding: 12px;
-  width: 60%;
+  width: 55%;
   font-family: 'VT323', monospace;
   font-size: 18px;
+  letter-spacing: 3px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.terminal-box input:focus {
+  outline: none;
+  border-color: var(--rojo);
+  box-shadow: 0 0 10px rgba(122,28,42,0.3);
 }
 
 .terminal-box button {
   background: var(--rojo);
-  color: #000;
+  color: #d0d0d0;
   border: none;
-  padding: 12px 18px;
+  padding: 12px 20px;
   font-family: 'VT323', monospace;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
+  letter-spacing: 2px;
+  transition: 0.2s;
+  margin-left: 8px;
+}
+
+.terminal-box button:hover {
+  background: var(--rojo-brillo);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(122,28,42,0.4);
+  transform: translateY(-1px);
+}
+
+.terminal-box button:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+.tercera-seccion hr {
+  border: none;
+  border-top: 1px solid #1c1c21;
+  margin: 25px 0;
+}
+
+/* PARA QUE LAS PAGINAS DE CIUDADES TAMBIEN QUEDEN CENTRADAS */
+.file p, .file h1, .file h2, .file div {
+  text-align: center;
 }
