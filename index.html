@@ -47,6 +47,23 @@
   <p style="font-size:10px; opacity:0.3;">VHS TRACKING: - - - -- - - BAD -- - - -</p>
 </div>
 
-<script src="script.js"></script>
+<script>
+  document.getElementById('btnDesbloquear').addEventListener('click', function(){
+    const clave = document.getElementById('claveInput').value.trim();
+    const mensaje = document.getElementById('mensajeError');
+    if(clave === "03031983"){
+      window.location.href = "final.html?v=sombrio";
+    } else {
+      mensaje.innerText = "KEY INVALIDA // VHS ERROR - " + clave + " NO COINCIDE";
+      document.getElementById('claveInput').style.borderColor = "#7a1c2a";
+      setTimeout(()=>{mensaje.innerText=""; document.getElementById('claveInput').style.borderColor="#22222a";}, 2500);
+    }
+  });
+
+  // También deja que funcione con ENTER
+  document.getElementById('claveInput').addEventListener('keypress', function(e){
+    if(e.key === 'Enter') document.getElementById('btnDesbloquear').click();
+  });
+</script>
 </body>
 </html>
