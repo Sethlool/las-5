@@ -129,3 +129,56 @@ a:hover {
   50% { top: 110%; opacity: 0.2; }
   100% { top: 110%; opacity: 0; }
 }
+
+/* LAYOUT NUEVO DE 3 COLUMNAS */
+.layout-principal{
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-left: 2px solid red;
+  border-right: 2px solid red;
+  padding: 0 20px;
+}
+
+.columna-lateral{
+  padding-top: 100px;
+}
+
+.img-evidencia{
+  width: 100%;
+  filter: grayscale(100%) contrast(120%) sepia(20%);
+  border: 1px solid red;
+  opacity: 0.7;
+}
+
+.img-evidencia:hover{
+  opacity: 1;
+  filter: none;
+}
+
+.pie-foto{
+  font-size: 10px;
+  color: red;
+  margin-top: 5px;
+}
+
+.tercera-seccion{
+  max-width: 1200px;
+  margin: 60px auto;
+  border-left: 2px solid red;
+  border-right: 2px solid red;
+  padding: 20px;
+}
+
+/* Para que en celular se vea bien */
+@media(max-width: 900px){
+ .layout-principal{
+    grid-template-columns: 1fr;
+    border: none;
+  }
+ .columna-lateral{
+    display: none; /* oculta las laterales en celular */
+  }
+}
