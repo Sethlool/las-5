@@ -6,89 +6,115 @@ body {
   font-family: 'Courier New', Courier, monospace;
   margin: 0;
   padding: 40px 20px;
-  background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, transparent 1px, transparent 2px);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* EFECTO RETRO DVD - SCANLINES */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,0,0,0.3) 0px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* VIGNETTE OSCURO DE LOS BORDES */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.7) 100%);
+  pointer-events: none;
+  z-index: 998;
 }
 
 .file {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 0 auto 40px auto;
   background-color: #111;
   border: 1px solid #222;
   padding: 30px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+  box-shadow: 0 0 30px rgba(0,0,0,0.9);
+  position: relative;
+  z-index: 1;
 }
 
 h1 {
   text-align: center;
-  font-size: 28px;
-  letter-spacing: 3px;
+  font-size: 32px;
+  letter-spacing: 4px;
   color: #fff;
-  text-shadow: 2px 0 red, -2px 0 cyan;
   text-transform: uppercase;
+  /* EFECTO GLITCH ROJO/CYAN DEL DVD */
+  text-shadow: 3px 0 #ff0000, -3px 0 #00ffff;
+  animation: glitch 2s infinite;
 }
 
-h2 {
-  font-size: 14px;
-  margin-top: 30px;
-  color: #fff;
+@keyframes glitch {
+  0% { text-shadow: 3px 0 #ff0000, -3px 0 #00ffff; }
+  20% { text-shadow: -3px 0 #ff0000, 3px 0 #00ffff; }
+  40% { text-shadow: 3px 0 #ff0000, -3px 0 #00ffff; }
+  60% { text-shadow: 2px 0 #ff0000, -2px 0 #00ffff; }
+  80% { text-shadow: -2px 0 #ff0000, 2px 0 #00ffff; }
+  100% { text-shadow: 3px 0 #ff0000, -3px 0 #00ffff; }
 }
 
-.red {
-  color: #ff0000;
-  text-shadow: none;
-}
+h2 { font-size: 13px; margin-top: 30px; color: #fff; text-align: center; }
+.red { color: #ff0000; }
+.centrado { text-align: center; }
+.cursiva { font-style: italic; opacity: 0.8; }
+.cabecera { font-size: 11px; opacity: 0.6; text-align: center; }
 
-.resaltado {
-  text-align: center;
-  font-style: italic;
-  margin: 20px 0;
-}
+p { text-align: center; line-height: 1.6; font-size: 13px; }
 
-ul.registros, ul {
+ul.registros {
   list-style: none;
   padding: 0;
   text-align: center;
 }
 
-ul li {
-  margin: 12px 0;
-  font-size: 13px;
+ul.registros li { 
+  margin: 14px 0; 
+  font-size: 13px; 
   opacity: 0.8;
+  letter-spacing: 1px;
 }
 
-ul li a {
-  color: #d0d0d0;
-  text-decoration: none;
-}
-
-ul li a:hover {
-  color: #ff0000;
-}
-
-/* TERMINAL */
 .terminal-box {
   margin-top: 40px;
   border: 1px dashed #ff0000;
   padding: 20px;
   text-align: center;
-  background-color: rgba(255,0,0,0.05);
+  background-color: rgba(255,0,0,0.06);
 }
 
 .terminal-box input {
   background: #000;
   border: 1px solid #ff0000;
   color: #fff;
-  padding: 8px 12px;
+  padding: 10px 12px;
   font-family: inherit;
-  width: 60%;
-  margin-top: 10px;
+  width: 65%;
 }
 
 .terminal-box button {
   background: #ff0000;
   color: #000;
   border: none;
-  padding: 8px 14px;
+  padding: 11px 14px;
   font-family: inherit;
   font-weight: bold;
   cursor: pointer;
@@ -99,9 +125,12 @@ ul li a:hover {
   background: #fff;
 }
 
-.error-msg {
-  color: red;
-  font-size: 12px;
-  margin-top: 10px;
-  min-height: 15px;
+.tercera-seccion hr { 
+  border: none; 
+  border-top: 1px solid #d0d0d0; 
+  margin: 20px 0; 
 }
+
+/* BORRA CUALQUIER RESTO DE LAS IMAGENES LATERALES */
+
+.columna-lateral, .img-evidencia, .layout-principal, .pie-foto { display: none !important; }
